@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import AssetModal from "./AssetModal";
 import AssetImage from "./AssetImage";
 import Toast from "./Toast";
+import Timeline from "./Timeline";
+import common from './StylesCommon.module.css';
 
 export default function HomeListings() {
   const [listings, setListings] = useState<Item[]>([]);
@@ -24,6 +26,10 @@ export default function HomeListings() {
     load();
   }, []);
 
+  const redirectToKonma = () => {
+    window.location.href = 'https://konmaestateledger.netlify.app/';
+  };
+
   return (
     <>
       <AssetModal
@@ -38,9 +44,37 @@ export default function HomeListings() {
             setListings={setListings}
           />
 
+          <div className={common['divtext']}>
+            <h1>How it works</h1>
+          </div>
+          <Timeline />
+
+          <div className={common['divbutton']}>
+          <button onClick={redirectToKonma} className={common['cssbuttons-io-button']}>
+  Explore Marketplace
+  <div className={common['icon']}>
+    <svg
+      height="24"
+      width="24"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M0 0h24v24H0z" fill="none"></path>
+      <path
+        d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  </div>
+</button>
+          </div>
+
+
+          
+
           {loading ? (
-            <div className="flex flex-row justify-center items-center">
-              <ArrowPathIcon className="w-48 h-48 text-gray-500 dark:text-gray-400 animate-spin" />
+            <div className="flex flex-row justify-left items-center">
+              
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
@@ -52,20 +86,8 @@ export default function HomeListings() {
                   }}
                 >
                   <div className="group">
-                    <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                      <AssetImage
-                        image={item.metadata.image}
-                        className="h-full w-full object-cover object-center group-hover:opacity-75"
-                      />
-                    </div>
-                    <h3 className="mt-4 text-sm text-gray-700">
-                      {item.metadata.name}
-                    </h3>
-                    {item.listing && (
-                      <p className="mt-1 text-lg font-medium text-gray-900">
-                        ₳ {item.listing.price / 1000000}
-                      </p>
-                    )}
+                    
+                    
                   </div>
                 </button>
               ))}
@@ -103,18 +125,10 @@ function Search({ loading, setLoading, setListings }) {
     <div className="mx-8 my-20">
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <MagnifyingGlassIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+          
         </div>
-        <input
-          className="block w-full rounded-md border-0 p-4 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          placeholder="Search assets by policy ID"
-          onChange={(e) => setUserQuery(e.target.value)}
-          value={userQuery}
-          onKeyDown={handleKeyPress}
-        />
-        <button className="text-white absolute right-2.5 bottom-2.5 bg-indigo-600 hover:bg-indigo-700 font-medium rounded-lg text-sm px-4 py-2 dark:bg-indigo-600 dark:hover:bg-indigo-700">
-          Search
-        </button>
+        
+        
       </div>
     </div>
   );

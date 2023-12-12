@@ -38,11 +38,11 @@ export async function getDatabase(dbName) {
   return db;
 }
 
-// export async function getDocuments(collection, query = {}) {
-//   let data = await collection.find(query).toArray();
-//   // data = JSON.stringify(data);
-//   return data;
-// }
+export async function getDocuments(collection, query = {}) {
+  let data = await collection.find(query).toArray();
+  data = JSON.stringify(data);
+  return data;
+}
 
 // export async function insertDocument(collection, document) {
 //   return await collection.insertOne(document);

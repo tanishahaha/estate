@@ -59,7 +59,7 @@ export default function AssetModal({
 
     try {
       const marketplace = getMarketplace(wallet);
-      const txHash = await marketplace.purchaseAsset(
+      const txHash = await (await marketplace).purchaseAsset(
         showModalItem.listing?.seller,
         showModalItem.unit,
         showModalItem.listing?.price
@@ -90,7 +90,7 @@ export default function AssetModal({
       const address = (await wallet.getUsedAddresses())[0];
 
       if (showModalItem.listing === undefined) {
-        const txHash = await marketplace.listAsset(
+        const txHash = await (await marketplace).listAsset(
           address,
           showModalItem.unit,
           parseInt(listPrice) * 1000000
@@ -106,7 +106,7 @@ export default function AssetModal({
         setToastMessage("Item listed for sale");
       }
       if (showModalItem.listing) {
-        const txHash = await marketplace.relistAsset(
+        const txHash = await (await marketplace).relistAsset(
           address,
           showModalItem.unit,
           showModalItem.listing?.price,
@@ -141,7 +141,7 @@ export default function AssetModal({
     try {
       const marketplace = getMarketplace(wallet);
       const address = (await wallet.getUsedAddresses())[0];
-      const txHash = await marketplace.delistAsset(
+      const txHash = await (await marketplace).delistAsset(
         address,
         showModalItem.unit,
         showModalItem.listing?.price

@@ -5,7 +5,7 @@ const callouts = [
     name: "Desk and Office",
     description: "Work from home accessories",
     imageSrc:
-      "/home-page-02-edition-01.jpg",
+      "/home-page-02-edition-01.png",
     imageAlt:
       "Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.",
     href: "collection",
@@ -14,7 +14,7 @@ const callouts = [
     name: "Self-Improvement",
     description: "Journals and note-taking",
     imageSrc:
-      "/home-page-02-edition-02.jpg",
+      "/home-page-02-edition-02.png",
     imageAlt:
       "Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.",
     href: "collection",
@@ -23,7 +23,7 @@ const callouts = [
     name: "Travel",
     description: "Daily commute essentials",
     imageSrc:
-      "/home-page-02-edition-03.jpg",
+      "/home-page-02-edition-03.png",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "collection",
   },
